@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     '@/assets/css/tailwind_custom.css'
   ],
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@primevue/nuxt-module', '@nuxt/icon'],
+  modules: ['@nuxtjs/tailwindcss', '@primevue/nuxt-module' , '@nuxt/icon'],
   primevue: {
     options: {
       theme: {
