@@ -12,8 +12,11 @@
   "dependencies": {
     "@nuxt/icon": "^1.6.1",
     "@primevue/themes": "^4.1.1",
+    "@prisma/client": "^5.21.1",
+    "mongodb": "^6.10.0",
     "nuxt": "^3.13.2",
     "primevue": "^4.1.1",
+    "prisma": "^5.21.1",
     "vue": "latest",
     "vue-router": "latest"
   },

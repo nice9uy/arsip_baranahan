@@ -2,7 +2,7 @@
     <header class="bg-gray-800 text-white ">
         <div class="mx-auto px-3 py-3 flex justify-between ">
             <!-- Logo -->
-            <div class=" flex items-center gap-3 text-2xl font-bold">
+            <div class=" flex items-center gap-3 text-2xl font-semibold">
                 <NuxtLink to="/">
                     <img src="~/assets/img/kemhan.png" alt="Discover Nuxt 3" height="50px" width="50px" />
                 </NuxtLink>
