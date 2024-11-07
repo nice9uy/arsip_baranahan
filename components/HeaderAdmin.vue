@@ -1,8 +1,8 @@
 <template>
     <header class="bg-gray-800 text-white ">
-        <div class="mx-auto px-3 py-3 flex justify-between ">
+        <div class="mx-auto px-2 py-2 flex justify-between ">
             <!-- Logo -->
-            <div class=" flex items-center gap-3 text-2xl font-semibold">
+            <div class=" flex items-center gap-3 text-2xl mx-3 font-semibold">
                 <NuxtLink to="/">
                     <img src="~/assets/img/kemhan.png" alt="Discover Nuxt 3" height="50px" width="50px" />
                 </NuxtLink>
@@ -10,20 +10,49 @@
             </div>
 
             <!-- Desktop Navigation Links -->
-            <nav class="hidden md:flex space-x-6 font-bold justify-between ">
+            <nav class="hidden md:flex space-x-4 mt-2 mx-3 font-bold  justify-between ">
 
                 <OverlayBadge value="9">
-                    <NuxtLink to="/arsip_baranahan/admin/dashboard">
-                        <Icon name="ic:baseline-dashboard" style="color: white" class="h-10 w-10"
-                            v-tooltip.bottom="'Dashboard'" />
-                        <!-- <InputText v-tooltip.bottom="'Dashboard'" type="text"  /> -->
+                    <NuxtLink to="/arsip_baranahan/admin/dashboard/">
+                        <button>
+                            <Icon name="ic:baseline-dashboard" style="color: white" class="h-9 w-9"
+                                v-tooltip.bottom="'Dashboard'" />
+                        </button>
                     </NuxtLink>
                 </OverlayBadge>
 
-                <button @click="toggleMenu">
+                <OverlayBadge value="9">
+                    <NuxtLink to="/arsip_baranahan/admin/surat_masuk/">
+                        <button>
+                            <Icon name="solar:inbox-in-bold" style="color: white" class="h-9 w-9"
+                                v-tooltip.bottom="'Surat Masuk'" />
+                        </button>
+                    </NuxtLink>
+                </OverlayBadge>
+
+                <OverlayBadge value="9">
+                    <NuxtLink to="/arsip_baranahan/admin/dashboard/">
+                        <button>
+                            <Icon name="solar:inbox-out-bold" style="color: white" class="h-9 w-9"
+                                v-tooltip.bottom="'Surat Keluar'" />
+                        </button>
+                    </NuxtLink>
+                </OverlayBadge>
+
+                        
+                <OverlayBadge value="9">
+                    <NuxtLink to="/arsip_baranahan/admin/dashboard/">
+                        <button>
+                            <Icon name="charm:notes-tick" style="color: white" class="h-9 w-9"
+                                v-tooltip.bottom="'Disposisi'" />
+                        </button>
+                    </NuxtLink>
+                </OverlayBadge>
+
+                <button type="button" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu">
                     <Icon name="mage:user-circle-fill" style="color: white" class="h-10 w-10"
                         v-tooltip.bottom="'User'" />
-                    <Menu ref="menu" id="overlay_menu" :model="items" :popup="true" />
+                    <Menu ref="menu" id="overlay_menu" :model="items" :popup="true" ></Menu>
                 </button>
 
             </nav>
@@ -50,56 +79,35 @@
                 <NuxtLink to="/contact" class="block py-2 nav-link-menu rounded">Contact</NuxtLink>
             </nav>
         </div>
+
     </header>
 </template>
 
-<script>
+<script setup>
 
-import ToggleButton from "primevue/togglebutton";
+import 'primeicons/primeicons.css';
 import { ref } from "vue";
 
-export default {
-    setup() {
-        // Ref for the menu element
-        const menu = ref(null);
-        const isMenuOpen = ref(false);
-
-        // Menu items
-        const items = ref([
+const menu = ref();
+const items = ref([
+    {
+        label: 'Options',
+        items: [
             {
-                label: 'Options',
-                items: [
-                    {
-                        label: 'Refresh',
-                        icon: 'pi pi-refresh'
-                    },
-                    {
-                        label: 'Export',
-                        icon: 'pi pi-upload'
-                    }
-                ]
+                label: 'Refresh',
+                icon: 'pi pi-asterisk'
+            },
+            {
+                label: 'Export',
+                icon: 'pi pi-upload'
             }
-        ]);
-
-        // Toggles the menu open/closed
-        const toggleMenu = () => {
-            isMenuOpen.value = !isMenuOpen.value;
-        };
-
-        // Handles click events for each menu item
-        const handleItemClick = (item) => {
-            console.log(`Clicked on: ${item.label}`);
-            isMenuOpen.value = false; // Close menu after selection
-        };
-
-        return {
-            menu,
-            isMenuOpen,
-            items,
-            toggleMenu,
-            handleItemClick
-        };
+        ]
     }
+]);
+  
+const toggle = (event) => {
+    menu.value.toggle(event);
 };
+
 
 </script>
